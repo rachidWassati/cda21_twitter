@@ -1,0 +1,29 @@
+.container-main {
+    display: flex;
+    width: 80%;
+}
+
+.profile-container {
+    width: 30%;
+}
+
+.content {
+    max-width: 1000px;
+    margin-top: 2rem;
+}
+
+.btn-tweet {
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+ul {
+    list-style: none;
+}
+
+.tweet-element {
+    border-radius: 5px;
+    font-size: 1.3rem;
+    margin: .5rem 0;
+    box-shadow: rgba(0, 0, 0, .05) 0px 0px 0px 1px;
+}

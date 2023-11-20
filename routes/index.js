@@ -1,8 +1,10 @@
 const router = require('express').Router()
+const { showTweets } = require('../controllers/tweet.controller')
+const tweetRoute = require('./tweet')
 
-router.get('/', (req, res) => {
-    res.render('home');
-})
+router.use('/tweet', tweetRoute)
+
+router.get('/', showTweets)
 
 
 module.exports = router

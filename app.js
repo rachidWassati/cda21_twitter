@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const routing = require('./routes');
+require('./database');
 
 const app = express()
 
