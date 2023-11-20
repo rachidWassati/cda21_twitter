@@ -1,12 +1,12 @@
 extends ../layout.pug
 
 block content 
+    script(src="/js/deleteTweet.js" defer)
     .d-flex.flex-row.mx-auto.content
         .profile-container.container-fluid 
             include includes/profile.pug
-        .tweets-container.flex-fill.container-fluid.tweets-list 
+        #tweets-container.tweets-container.flex-fill.container-fluid.tweets-list 
             if tweets 
                 each tweet in tweets 
-                    .card.tweet-element
-                        .card-body=tweet.content
+                    include includes/tweet-card.pug
             

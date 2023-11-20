@@ -1,0 +1,7 @@
+.card.tweet-element
+    .card-body=tweet.content
+    .card-actions.d-flex.flex-row.justify-content-around
+        i.fa-regular.fa-heart 
+        i.fas.fa-retweet 
+        i.fa-regular.fa-message 
+        i.fas.fa-trash(tweetId= tweet._id)

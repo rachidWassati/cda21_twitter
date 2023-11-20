@@ -24,6 +24,20 @@ ul {
 .tweet-element {
     border-radius: 5px;
     font-size: 1.3rem;
-    margin: .5rem 0;
+    margin: 1.5rem 0;
     box-shadow: rgba(0, 0, 0, .05) 0px 0px 0px 1px;
+}
+
+.card-actions {
+    margin-top: 1rem;
+    border-top: 1px solid #333;
+    padding: 2rem 0;
+}
+
+.fas, .fa-regular {
+    cursor: pointer;
+}
+
+.fas:hover, .fa-regular:hover {
+    color: rgb(22, 93, 169)(0, 123, 255) !important;
 }

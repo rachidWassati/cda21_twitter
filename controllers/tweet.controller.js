@@ -1,5 +1,5 @@
 const Tweet = require("../database/models/tweet.model");
-const { create, findAll } = require("../database/queries/tweet.queries");
+const { create, findAll, deleteById } = require("../database/queries/tweet.queries");
 
 
 exports.displayForm = (req, res) => {
@@ -21,4 +21,14 @@ exports.createNewTweet = async (req, res) => {
         res.status(400).render('tweet/tweet-form', {errors})
     }
 
+}
+
+exports.deleteTweet = async (req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId;
+        await deleteById(tweetId)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 }
