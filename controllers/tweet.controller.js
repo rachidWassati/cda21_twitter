@@ -1,6 +1,7 @@
 const Tweet = require("../database/models/tweet.model");
 const { create, findAll, deleteById, findTweetById, findTweetAndUpdate } = require("../database/queries/tweet.queries");
 
+/*        Controllers des Tweets                 */
 
 exports.displayForm = (req, res) => {
     res.render('tweet/tweet-new')
