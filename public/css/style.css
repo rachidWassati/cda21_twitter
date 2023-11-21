@@ -41,3 +41,7 @@ ul {
 .fas:hover, .fa-regular:hover {
     color: rgb(22, 93, 169)(0, 123, 255) !important;
 }
+
+.fa-pen {
+    font-size: 1rem;
+}

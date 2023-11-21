@@ -1,0 +1,12 @@
+mixin tweetForm(headerText= 'Ecrire', btnText= 'Tweeter', tweet = {})
+    form(action= tweet._id ? `/tweet/edit/${tweet._id}` : '/tweet/new' method="post" class="card")
+        .card-header #{headerText} un tweet 
+        .card-body 
+            .form-group 
+                textarea(name="content" class="form-control" placeholder="Quoi de neuf aujourd'hui ?")= tweet.content
+            if errors 
+                ul.my-2 
+                    each error in errors 
+                        li.text-danger=error
+            .w-100.d-flex.justify-content-md-end.mt-3
+                input.btn.btn-primary(type="submit" value=btnText)
