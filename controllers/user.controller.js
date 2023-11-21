@@ -1,7 +1,5 @@
 const { createUser } = require("../database/queries/user.queries")
 
-// reglage du probleme
-
 exports.signupForm = (req, res, next) => {
     try {
         res.render('auth/signup')
