@@ -1,3 +1,4 @@
+const { createUser } = require("../database/queries/user.queries")
 
 exports.signupForm = (req, res, next) => {
     try {
@@ -7,11 +8,13 @@ exports.signupForm = (req, res, next) => {
     }
 }
 
-exports.signup = (req, res, next) => {
+exports.signup = async (req, res, next) => {
+    const body = req.body
     try {
-        res.end()
+        const user = await createUser(body);
+        res.redirect('/');
     } catch (error) {
-        next(error)
+        res.render('auth/signup', {errors: [error.message]})
     }
 }
 
