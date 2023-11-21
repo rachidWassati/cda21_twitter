@@ -1,33 +1,29 @@
-extends ../layout.pug 
+extends layout-auth.pug 
 
-block content 
-    section 
-        .imgBox
-            img(src="/images/bg_connexion.jpg", alt="")
-        .contentBox 
-            .formBox 
-                h2 Inscription 
-                form(action="/user/signup" method="post")
-                    .google-signup 
-                        a(href="/auth/google")
-                            img(src="/images/logo_google.png", alt="Google Logo")
-                            p Signup with Google
-                    .separator 
-                        .separator-left 
-                        p OU 
-                        .separator-right 
-                    .inputBox 
-                        input#username(type="text", name="username" placeholder= "Username")
-                    .inputBox
-                        input#email(type="email", name="email" placeholder= "Email")
-                    .inputBox 
-                        input#password(type="password", name="password" placeholder= "Password")
-                    .inputBox 
-                        input(type="submit", value="S'inscrire")
-                    .inputBox 
-                        p Vous avez deja un compte?
-                        a(href="/auth/signin/form")
-                    if errors 
-                        ul.my-2 
-                            each error in errors
-                                li.text-danger=error
+block form
+    .formBox 
+        h2 Inscription 
+        form(action="/user/signup" method="post")
+            .google-signup 
+                a(href="/auth/google")
+                    img(src="/images/logo_google.png", alt="Google Logo")
+                    p Signup with Google
+            .separator 
+                .separator-left 
+                p OU 
+                .separator-right 
+            .inputBox 
+                input#username(type="text", name="username" placeholder= "Username")
+            .inputBox
+                input#email(type="email", name="email" placeholder= "Email")
+            .inputBox 
+                input#password(type="password", name="password" placeholder= "Password")
+            .inputBox 
+                input(type="submit", value="S'inscrire")
+            .inputBox 
+                a(href="/auth/signin")
+                    p Vous avez deja un compte?
+            if errors 
+                ul.my-2 
+                    each error in errors
+                        li.text-danger=error

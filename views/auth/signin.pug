@@ -1,0 +1,27 @@
+extends layout-auth.pug 
+
+block form 
+    .formBox 
+        h2 Connexion 
+        form(action="/auth/signin" method="post")
+            .google-signup.d-flex.align-items-center
+                a(href="/auth/google")
+                    img(src="/images/logo_google.png", alt="Google Logo")
+                    p Signin with Google
+            .separator 
+                .separator-left 
+                p OU 
+                .separator-right 
+            .inputBox
+                input#email(type="email", name="email" placeholder= "Email")
+            .inputBox 
+                input#password(type="password", name="password" placeholder= "Password")
+            .inputBox 
+                input(type="submit", value="Se connecter")
+            .inputBox 
+                a(href="/user/signup")
+                    p Vous n'avez pas compte?
+            if errors 
+                ul.my-2 
+                    each error in errors
+                        li.text-danger=error
