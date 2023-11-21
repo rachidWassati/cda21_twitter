@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+section .imgBox {
+    position: relative;
+    width: 60%;
+    height: 100%;
+}
+
+section .imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .imgBox:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, #7d7b7c, #0e6289);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+section .contentBox {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+section .contentBox .formBox {
+    width: 50%;
+}
+
+section .contentBox .formBox h2 {
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #273c75;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+section .contentBox .formBox .inputBox {
+    margin-bottom: 20px;
+}
+
+section .contentBox .formBox .inputBox span {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607d8b;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+section .contentBox .formBox .inputBox input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+
+section .contentBox .formBox .inputBox input[type="submit"] {
+    background: #273c75;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+section .contentBox .formBox .inputBox input[type="submit"]:hover {
+    background: #4b629f;
+}
+
+section .contentBox .formBox .remember {
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+section .contentBox .formBox p {
+    color: #607d8b;
+}
+
+section .contentBox .formBox p a {
+    color: #273c75;
+    text-decoration: none;
+}
+
+.google-signup a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border: 1px solid #273c75;
+    border-radius: 1.2rem;
+    margin: 3rem 0;
+}
+
+.google-signup img {
+    max-width: 1.5rem;
+    margin-right: .7rem;
+}
+
+.google-signup a {
+    color: aqua;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color .4s;
+}
+
+.google-signup a:hover {
+    background-color: #273c75;
+    color: white
+}
+
+.separator {
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.separator-left, .separator-right {
+    border: 1px solid #273c75;
+    flex: 1;
+}
+
+.separator p {
+    margin: 0 1rem;
+}
+
+@media (max-width: 1100px) {
+    section .imgBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    section .contentBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    section .contentBox .formBox {
+        border-radius: 15px;
+        width: 100%;
+        padding: 40px;
+        background: rgba(255, 255, 255, .8);
+        margin: 50px;
+    }
+}
