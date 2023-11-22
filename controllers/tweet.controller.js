@@ -1,14 +1,17 @@
-const Tweet = require("../database/models/tweet.model");
-const { create, findAll, deleteById, findTweetById, findTweetAndUpdate } = require("../database/queries/tweet.queries");
+const { create, findAll, deleteById, findTweetById, findTweetAndUpdate, getCurrentUserTweetsWithFollowings } = require("../database/queries/tweet.queries");
 
 /*        Controllers des Tweets                 */
-
 exports.displayForm = (req, res) => {
     res.render('tweet/tweet-new', {isAuthenticated: req.isAuthenticated(), currentUser: req.user})
 }
 
 exports.showTweets = async (req, res) => {
-    const tweets = await findAll()
+    let tweets;
+    if(req.user){
+        tweets = await getCurrentUserTweetsWithFollowings(req.user)
+    } else {
+        tweets = await findAll()
+    }
     res.render('tweet/tweet-list', {isAuthenticated: req.isAuthenticated(), currentUser: req.user, tweets});
 }
 

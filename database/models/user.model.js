@@ -8,7 +8,9 @@ const userSchema = schema({
         email: {type: String, required: true, unique: true},
         password: {type: String, required: true}
     },
-    image: {type: String, default: '/images/default_profile.png'}
+    image: {type: String, default: '/images/default_profile.png'},
+    followings: {type: [schema.Types.ObjectId], ref: 'user'},
+    followers: {type: [schema.Types.ObjectId], ref: 'user'}
 }, {
     timestamps: true
 })

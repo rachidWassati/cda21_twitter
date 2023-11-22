@@ -55,8 +55,8 @@ ul {
 
 .avatar-lg {
     cursor: pointer;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     border: 3px solid rgb(22, 93, 169);
 }
