@@ -2,6 +2,7 @@ const { createUser } = require("../database/queries/user.queries")
 
 exports.signupForm = (req, res, next) => {
     try {
+        if(req.isAuthenticated()) res.redirect('/')
         res.render('auth/signup', {isAuthenticated: req.isAuthenticated(), currentUser: req.user})
     } catch (error) {
         next(error)

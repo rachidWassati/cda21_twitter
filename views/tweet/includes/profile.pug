@@ -1,3 +1,18 @@
 if isAuthenticated 
-    p @#{currentUser.username}
-    p= currentUser.local.email
+    .profile 
+        img(src="/images/default_profile.png", alt="" class= "avatar-lg")
+        p.profile-username 
+            small @#{currentUser.username}
+        p.profile-fullname 
+            strong Firstname Lastname 
+        .follow-data 
+            .data.follow-data-posts 
+                p Posts 
+                p 5
+            .data.follow-data.followers 
+                p Followers 
+                p 5
+            .data.follow-data-following     
+                p Following 
+                p 5
+            
