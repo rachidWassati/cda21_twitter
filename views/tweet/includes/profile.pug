@@ -1,1 +1,3 @@
-p Profil
+if isAuthenticated 
+    p @#{currentUser.username}
+    p= currentUser.local.email

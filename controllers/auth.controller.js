@@ -1,12 +1,8 @@
 const passport = require("passport")
 
 
-exports.signinForm = async (req, res, next) => {
-    try {
-        res.render('auth/signin')
-    } catch (error) {
-        next(error)
-    }
+exports.signinForm = (req, res, next) => {
+    res.render('auth/signin')
 }
 
 exports.signin = (req, res, next) => {
@@ -27,11 +23,10 @@ exports.signin = (req, res, next) => {
     })(req, res, next)
 }
 
-exports.signout = async (req, res, next) => {
-    try {
-        res.end()
-    } catch (error) {
-        next(error)
-    }
+exports.signout = (req, res, next) => {
+    req.logout((err) => {
+        if(err) return next(err)
+        res.redirect('/')
+    })
 }
 
