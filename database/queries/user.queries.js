@@ -1,6 +1,5 @@
 const User = require("../models/user.model")
 
-
 exports.createUser = async (user) => {
     try {
         const hashedPassword = await User.hashPassword(user.password)
@@ -29,4 +28,20 @@ exports.searchUsersByRegex = (term) => {
     const regExp = `^${term}`;
     const reg = new RegExp(regExp);
     return User.find({username: {$regex: reg}}).exec()
+}
+
+exports.addUserToCurrentUserFollowingList = async (currentUser, userId) => {
+    currentUser.followings.push(userId);
+    const user = await User.findById(userId)
+    user.followers.push(currentUser._id)
+    user.save()
+    return currentUser.save()
+}
+
+exports.removeUserFromCurrentUserFollowingList = async (currentUser, userId) => {
+    currentUser.followings = currentUser.followings.filter(id => id.toString() !== userId)
+    const user = await User.findById(userId)
+    user.followers = user.followers.filter(id => id.toString() !== currentUser._id)
+    user.save()
+    return currentUser.save();
 }

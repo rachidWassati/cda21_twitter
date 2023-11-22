@@ -5,7 +5,8 @@ const routing = require('./routes');
 const errorHandler = require('errorhandler');
 require('./database');
 
-const app = express()
+const app = express();
+app.locals.moment = require('moment');
 exports.app = app;
 
 app.set('views', path.join(__dirname, 'views'))

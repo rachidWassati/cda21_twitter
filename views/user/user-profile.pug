@@ -8,7 +8,10 @@ block content
         .profile-container.container-fluid 
             +profile(user, false)
             if currentUser._id.toString() !== user._id.toString()
-                a.btn.btn-primary(href=`/user/follow/${user._id}`) Follow
+                if currentUser.followings.map(objId => objId.toString()).includes(user._id.toString())
+                    a.btn.btn-primary(href=`/user/unfollow/${user._id}`) unFollow
+                else
+                    a.btn.btn-primary(href=`/user/follow/${user._id}`) Follow
         #tweets-container.tweets-container.flex-fill.container-fluid.tweets-list 
             if tweets 
                 each tweet in tweets 
