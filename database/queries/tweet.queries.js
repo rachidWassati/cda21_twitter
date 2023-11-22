@@ -14,9 +14,10 @@ exports.getCurrentUserTweetsWithFollowings = (user) => {
     return Tweet.find({author: {$in : [...user.followings, user._id]}}).populate('author').exec()
 }
 
-exports.getUserTweetsFromUsername = (username) => {
-    const author = User.find({username: username})
-    return Tweet.find({author: author._id}).populate('author').exec()
+exports.getUserTweetsFromUsername = async (username) => {
+    const author = await User.findOne({username: username})
+    const tweets = await Tweet.find({author: author._id}).populate('author')
+    return [author, tweets]
 }
 
 exports.deleteById = (tweetId) => {

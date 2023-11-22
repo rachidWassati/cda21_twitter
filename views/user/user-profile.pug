@@ -1,0 +1,15 @@
+extends ../layout.pug
+include ../mixins/profile.pug 
+
+block content 
+    block content 
+    script(src="/js/deleteTweet.js" defer)
+    .d-flex.flex-row.mx-auto.content
+        .profile-container.container-fluid 
+            +profile(user, false)
+            if currentUser._id.toString() !== user._id.toString()
+                a.btn.btn-primary(href=`/user/follow/${user._id}`) Follow
+        #tweets-container.tweets-container.flex-fill.container-fluid.tweets-list 
+            if tweets 
+                each tweet in tweets 
+                    include ../tweet/includes/tweet-card.pug

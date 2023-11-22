@@ -1,0 +1,8 @@
+.search-menu-result.d-flex.flex-column
+    if users && users.length
+        each user in users
+            a.d-flex.align-items-center.my-2(href=`/user/${user.username}`)
+                img(src=user.image, alt="" class="p-2 avatar-md")
+                p.mx-2 #{user.username}
+    else 
+        span.p-3 Aucun utilisateur

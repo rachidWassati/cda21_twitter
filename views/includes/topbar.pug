@@ -1,20 +1,25 @@
+script(src="/js/searchbar.js")
 navbar(class="navbar navbar-expand-lg navbar-light bg-light")
     a(class="navbar-brand" href="/")
-        img(width="50" height="50" src="/images/logo.png")
+        img(width="50" height="50" src="/images/logo.png" class="mx-3")
     button(class="navbar-toggler")
         span(class="navbar-toggler-icon")
     div(class="collapse navbar-collapse")
         ul(class="navbar-nav ml-auto d-flex")
             li(class="nav-item active")
-                a(class="btn btn-primary btn-tweet" href="/tweet/new")
+                a(class="btn btn-primary btn-tweet mx-3" href="/tweet/new")
                     i.fas.fa-pen
             .d-flex.flex-justify-end.flex-fill
-            if isAuthenticated
-                li(class="nav-item")
-                        a(class="nav-link" href="/auth/signout") Se deconnecter 
-            else
-                li(class="nav-item")
-                    a(class="nav-link" href="/auth/signin") Connexion
-                li(class="nav-item")
-                    a(class="nav-link" href="/user/signup") S'inscrire
-                
+                if isAuthenticated
+                    li(class="nav-item")
+                            a(class="nav-link" href="/auth/signout") Se deconnecter 
+                else
+                    li(class="nav-item")
+                        a(class="nav-link" href="/auth/signin") Connexion
+                    li(class="nav-item")
+                        a(class="nav-link" href="/user/signup") S'inscrire
+            .search-bar
+                form
+                    i.fas.fa-magnifying-glass 
+                    input#search-input(type="text", name="search" placeholder="Search an user")
+                #search-menu-container

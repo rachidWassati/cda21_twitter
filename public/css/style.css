@@ -1,3 +1,8 @@
+a {
+    text-decoration: none;
+    color: #333;
+}
+
 .container-main {
     display: flex;
     width: 80%;
@@ -99,4 +104,46 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#search-input {
+    outline: none;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar form {
+    padding: .5rem 1.5rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.search-bar form input {
+    border: none;
+    margin-left: .5rem;
+}
+
+.search-bar #search-menu-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    z-index: 1;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.search-bar #search-menu-container .search-menu-result {
+    padding: .5rem 1.5rem;
+}
+
+.search-bar #search-menu-container .search-menu-result a:hover {
+    cursor: pointer;
+    background: #eee;
 }

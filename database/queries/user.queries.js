@@ -24,3 +24,9 @@ exports.findUserByEmail = (email) => {
 exports.findUserById = (id) => {
     return User.findById(id).exec()
 }
+
+exports.searchUsersByRegex = (term) => {
+    const regExp = `^${term}`;
+    const reg = new RegExp(regExp);
+    return User.find({username: {$regex: reg}}).exec()
+}

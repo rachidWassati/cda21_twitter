@@ -1,27 +1,6 @@
+include ../../mixins/profile.pug 
+
 if isAuthenticated 
     script(src="/js/uploadAvatar.js")
-    .profile 
-        .profile-image 
-            form(
-                id="form-container"
-                action="/user/update/image"
-                method="post"
-                enctype="multipart/form-data"
-            ) 
-                input#input-avatar(type="file", name="image" style="display:none")
-                img(src=currentUser.image, alt="" class= "avatar-lg" id="profile-image")
-        p.profile-username 
-            small @#{currentUser.username}
-        p.profile-fullname 
-            strong Firstname Lastname 
-        .follow-data 
-            .data.follow-data-posts 
-                p Posts 
-                p 5
-            .data.follow-data.followers 
-                p Followers 
-                p 5
-            .data.follow-data-following     
-                p Following 
-                p 5
+    +profile(currentUser)
             
