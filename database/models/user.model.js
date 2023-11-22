@@ -7,7 +7,8 @@ const userSchema = schema({
     local: {
         email: {type: String, required: true, unique: true},
         password: {type: String, required: true}
-    }
+    },
+    image: {type: String, default: '/images/default_profile.png'}
 }, {
     timestamps: true
 })

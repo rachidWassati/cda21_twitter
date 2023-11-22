@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(routing)
 
 if(process.env.NODE_ENV === 'dev') {
-    app.use(errorHandler)
+    app.use(errorHandler())
 } else {
     app.use((err, req, res, next) => {
         const code = err.code || 500

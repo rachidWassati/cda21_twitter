@@ -1,6 +1,15 @@
 if isAuthenticated 
+    script(src="/js/uploadAvatar.js")
     .profile 
-        img(src="/images/default_profile.png", alt="" class= "avatar-lg")
+        .profile-image 
+            form(
+                id="form-container"
+                action="/user/update/image"
+                method="post"
+                enctype="multipart/form-data"
+            ) 
+                input#input-avatar(type="file", name="image" style="display:none")
+                img(src=currentUser.image, alt="" class= "avatar-lg" id="profile-image")
         p.profile-username 
             small @#{currentUser.username}
         p.profile-fullname 

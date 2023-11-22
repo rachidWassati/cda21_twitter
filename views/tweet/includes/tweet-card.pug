@@ -1,7 +1,7 @@
 .card.tweet-element
     .d-flex.justify-content-end.align-items-center.m-3
         .d-flex.flex-row.flex-fill
-            img(src="/images/default_profile.png", alt="Image de profil" class="avatar-md mx-2")
+            img(src=currentUser.image, alt="Image de profil" class="avatar-md mx-2")
             p @#{currentUser.username}
         a(href=`/tweet/edit/${tweet._id}`)
             i.fas.fa-pen.p-3
