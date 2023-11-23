@@ -15,7 +15,7 @@ mixin profile(user, editable= true)
         p.profile-username 
             small @#{user.username}
         p.profile-fullname 
-            strong Firstname Lastname 
+            strong= user.fullname 
         .follow-data 
             .data.follow-data-posts 
                 p Posts 
