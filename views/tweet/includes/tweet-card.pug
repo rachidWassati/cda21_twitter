@@ -1,18 +1,30 @@
-.card.tweet-element
-    .d-flex.justify-content-end.align-items-center.m-3
-        .d-flex.flex-row.flex-fill
-            img(src=tweet.author.image, alt="Image de profil" class="avatar-md mx-2")
-            .d-flex.flex-column
-                a(href=`/user/${tweet.author.username}`) 
-                    p @#{tweet.author.username}
-                small= moment(tweet.createdAt).lang('fr').fromNow()
+.d-flex.justify-content-end.align-items-center.m-3
+    .d-flex.flex-row.flex-fill
+        img(src=tweet.author.image, alt="Image de profil" class="avatar-md mx-2")
+        .d-flex.flex-column
+            a(href=`/user/${tweet.author.username}`) 
+                p @#{tweet.author.username}
+            small= moment(tweet.createdAt).lang('fr').fromNow()
+    if currentUser && currentUser._id.toString() === tweet.author._id.toString()
+        a(href=`/tweet/edit/${tweet._id}`)
+            i.fas.fa-pen.p-3
+.card-body=tweet.content
+.card-actions.d-flex.flex-row.justify-content-around
+    div.d-flex.flex-row.align-items-center 
         if currentUser && currentUser._id.toString() === tweet.author._id.toString()
-            a(href=`/tweet/edit/${tweet._id}`)
-                i.fas.fa-pen.p-3
-    .card-body=tweet.content
-    .card-actions.d-flex.flex-row.justify-content-around
-        i.fa-regular.fa-heart 
-        i.fas.fa-retweet 
-        i.fa-regular.fa-message 
-        if currentUser && currentUser._id.toString() === tweet.author._id.toString()
-            i.fas.fa-trash(tweetId= tweet._id)
+            i(class=`fa-${tweet.nbLikes > 0 ? 'solid' : 'regular'} fa-heart mx-2`) 
+            p= tweet.nbLikes
+        else if currentUser
+            i(tweetid = tweet._id class=`fa-${tweet.nbLikes > 0 ? 'solid' : 'regular'} fa-heart clickable mx-2`)
+            p= tweet.nbLikes
+        else
+            i(class=`fa-${tweet.nbLikes > 0 ? 'solid' : 'regular'} fa-heart mx-2`)
+            p= tweet.nbLikes
+    div.d-flex.flex-row.align-items-center 
+        i.fas.fa-retweet.mx-2
+        p= tweet.nbShares 
+    div.d-flex.flex-row.align-items-center 
+        i.fa-regular.fa-message.mx-2 
+        p= tweet.nbComments 
+    if currentUser && currentUser._id.toString() === tweet.author._id.toString()
+        i.fas.fa-trash(tweetId= tweet._id)

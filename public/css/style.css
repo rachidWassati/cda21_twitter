@@ -39,7 +39,7 @@ ul {
     padding: 2rem 0;
 }
 
-.fas, .fa-regular {
+.fas, .fa-regular, .fa-solid {
     cursor: pointer;
 }
 

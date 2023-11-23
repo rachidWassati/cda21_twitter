@@ -1,4 +1,4 @@
-const { create, findAll, deleteById, findTweetById, findTweetAndUpdate, getCurrentUserTweetsWithFollowings } = require("../database/queries/tweet.queries");
+const { create, findAll, deleteById, findTweetById, findTweetAndUpdate, getCurrentUserTweetsWithFollowings, likeTweet } = require("../database/queries/tweet.queries");
 
 /*        Controllers des Tweets                 */
 exports.displayForm = (req, res) => {
@@ -55,5 +55,19 @@ exports.updateTweet = async (req, res, next) => {
         const errors = Object.keys(error.errors).map(key => error.errors[key].message)
         const tweet = await findTweetById(tweetId)
         res.status(400).render('tweet/tweet-edit', {isAuthenticated: req.isAuthenticated(), currentUser: req.user, tweet, errors })
+    }
+}
+
+exports.like = async (req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId;
+        await likeTweet(tweetId, req.user);
+
+        const tweet = await findTweetById(tweetId);
+        
+        res.render('tweet/includes/tweet-card', { tweet, currentUser: req.user })
+
+    } catch (error) {
+        next(error)
     }
 }
