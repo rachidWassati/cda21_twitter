@@ -26,6 +26,6 @@ function addNewComment() {
         
         const card = await response.text()
         
-        commentsContainer.insertAdjacentHTML('beforebegin', card)
+        commentsContainer.insertAdjacentHTML('afterbegin', card)
     })
 }
