@@ -1,6 +1,5 @@
 const passport = require("passport")
 
-
 exports.signinForm = (req, res, next) => {
     res.render('auth/signin')
 }
@@ -30,3 +29,15 @@ exports.signout = (req, res, next) => {
     })
 }
 
+exports.googleAuth = (req, res, next) => {
+    passport.authenticate('google', {
+        scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+    })(req, res, next)
+}
+
+exports.googleAuthCb = (req, res, next) => {
+    passport.authenticate('google', {
+        successRedirect: '/',
+        failureRedirect: '/auth/signin'
+    })(req, res, next)
+}

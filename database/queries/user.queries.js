@@ -47,3 +47,7 @@ exports.removeUserFromCurrentUserFollowingList = async (currentUser, userId) => 
     user.save()
     return currentUser.save();
 }
+
+exports.findUserByGoogleId = (googleId) => {
+    return User.findOne({ 'local.googleId' : googleId }).exec();
+}

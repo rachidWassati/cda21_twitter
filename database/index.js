@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const env = require(`../environment/${process.env.NODE_ENV}`)
 
 mongoose.connect(
-    'mongodb://rachid:toto@127.0.0.1:27017/twitter'
+    env.dbUrl
 ).then(() => console.log("✅ Connexion etablie !"))
 .catch(err => console.log(err))

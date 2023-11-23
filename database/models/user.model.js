@@ -8,7 +8,7 @@ const userSchema = schema({
     lastname: {type: String, required: true},
     local: {
         email: {type: String, required: true, unique: true},
-        password: {type: String, required: true},
+        password: {type: String},
         googleId: String
     },
     image: {type: String, default: '/images/default_profile.png'},
