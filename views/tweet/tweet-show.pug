@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block content 
+    script(src="/js/addComment.js" defer) 
+    .d-flex.flex-row.mx-auto.content
+        .profile-container.container-fluid 
+            include includes/profile.pug
+        #comments-container.tweets-container.flex-fill.container-fluid.tweets-list
+            .card.tweet-element
+                include includes/tweet-card.pug
+            form#commentForm(action= `/comment/new/${tweet._id}` method="post" class="card")
+                .card-header Votre reponse
+                .card-body 
+                    .form-group 
+                        textarea(name="content" class="form-control" placeholder="Quoi de neuf aujourd'hui ?")
+                    if errors 
+                        ul.my-2 
+                            each error in errors 
+                                li.text-danger=error
+                    .w-100.d-flex.justify-content-md-end.mt-3
+                        input.btn.btn-primary(type="submit" value="Repondre")
+            if comments 
+                each comment in comments
+                    #comment-list
+                        include includes/comment-card.pug

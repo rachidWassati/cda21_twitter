@@ -14,7 +14,8 @@ const userSchema = schema({
     image: {type: String, default: '/images/default_profile.png'},
     followings: {type: [schema.Types.ObjectId], ref: 'user'},
     followers: {type: [schema.Types.ObjectId], ref: 'user'},
-    likedTweets: {type: [schema.Types.ObjectId], ref: 'tweet'}
+    likedTweets: {type: [schema.Types.ObjectId], ref: 'tweet'},
+    nbTweets: {type: Number, default: 0}
 }, {
     timestamps: true
 })

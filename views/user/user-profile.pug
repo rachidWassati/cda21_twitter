@@ -15,4 +15,5 @@ block content
         #tweets-container.tweets-container.flex-fill.container-fluid.tweets-list 
             if tweets 
                 each tweet in tweets 
-                    include ../tweet/includes/tweet-card.pug
+                    .card.tweet-element
+                        include ../tweet/includes/tweet-card.pug

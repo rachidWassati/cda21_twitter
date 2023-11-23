@@ -1,3 +1,4 @@
+const { getAllCommentsByTweetId } = require("../database/queries/comment.queries");
 const { create, findAll, deleteById, findTweetById, findTweetAndUpdate, getCurrentUserTweetsWithFollowings, likeTweet } = require("../database/queries/tweet.queries");
 
 /*        Controllers des Tweets                 */
@@ -18,6 +19,8 @@ exports.showTweets = async (req, res) => {
 exports.createNewTweet = async (req, res) => {
     try {
         await create({ ...req.body, author: req.user._id })
+        req.user.nbTweets++
+        await req.user.save()
         res.redirect('/')
     } catch (error) {
         const errors = Object.keys(error.errors).map(key => error.errors[key].message)
@@ -67,6 +70,17 @@ exports.like = async (req, res, next) => {
         
         res.render('tweet/includes/tweet-card', { tweet, currentUser: req.user })
 
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.displayTweet = async (req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId;
+        const tweet = await findTweetById(tweetId);
+        const commentsForTweet = await getAllCommentsByTweetId(tweetId)
+        res.render('tweet/tweet-show', {comments: commentsForTweet, tweet, currentUser: req.user, isAuthenticated: req.isAuthenticated()})
     } catch (error) {
         next(error)
     }

@@ -19,7 +19,7 @@ mixin profile(user, editable= true)
         .follow-data 
             .data.follow-data-posts 
                 p Posts 
-                p= tweets.filter(tweet => tweet.author._id.toString() === user._id.toString()).length
+                p= user.nbTweets
             .data.follow-data.followers 
                 p Followers 
                 p= user.followers.length

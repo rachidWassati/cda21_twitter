@@ -24,7 +24,8 @@
         i.fas.fa-retweet.mx-2
         p= tweet.nbShares 
     div.d-flex.flex-row.align-items-center 
-        i.fa-regular.fa-message.mx-2 
+        a(href=`/tweet/${tweet._id}`)
+            i.fa-regular.fa-message.mx-2 
         p= tweet.nbComments 
     if currentUser && currentUser._id.toString() === tweet.author._id.toString()
         i.fas.fa-trash(tweetId= tweet._id)
